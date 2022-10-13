@@ -21,10 +21,10 @@ public class BDatabase {
     protected int current_user;
 
     public BDatabase() {
-        this.db_host = "jdbc:mariadb://dwarves.iut-fbleau.fr/";
-        this.db_name = "boudjeml";
-        this.db_user = "boudjeml";
-        this.db_password = "fcy2u8RXOrfdPIpA";
+        this.db_host = "jdbc:mariadb://" + "HOST";
+        this.db_name = "DB";
+        this.db_user = "USER";
+        this.db_password = "PASSWORD";
 
         try {
             Class.forName("org.mariadb.jdbc.Driver");
