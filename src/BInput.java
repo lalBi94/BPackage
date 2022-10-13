@@ -1,12 +1,23 @@
+/* [BInput]
+ *  Desc: To create Operationnal JTextfield fast :)
+ *  GitHub: https://github.com/lalBi94
+ *  Created by: Bilal Boudjemline
+ *  28/09/2022 at 20:35
+ * */
+
 import javax.swing.JTextField;
 import java.awt.*;
 
 public class BInput extends JTextField {
     public int width = 100;
     public int height = 50;
+    public String inner;
     public Color color = Color.BLACK;
 
-    public BInput() {}
+    public BInput(String in) {
+        this.inner = in;
+        this.setText(in);
+    }
 
     public BInput(int w, int h) {
         this.width = w;

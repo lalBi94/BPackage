@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import org.mariadb.jdbc.*;
 
-// Syntax : jdbc:mariadb://
+// Maitre
 
 public class BDatabase {
     public String db_host;
@@ -18,12 +18,13 @@ public class BDatabase {
     public String db_user;
     protected String db_password;
     protected Connection sharedObject;
+    protected int current_user;
 
-    public BDatabase(String host, String user, String password, String database) {
-        this.db_host = "jdbc:mariadb://" + host + "/";
-        this.db_name = database;
-        this.db_user = user;
-        this.db_password = password;
+    public BDatabase() {
+        this.db_host = "jdbc:mariadb://dwarves.iut-fbleau.fr/";
+        this.db_name = "boudjeml";
+        this.db_user = "boudjeml";
+        this.db_password = "fcy2u8RXOrfdPIpA";
 
         try {
             Class.forName("org.mariadb.jdbc.Driver");
@@ -49,11 +50,21 @@ public class BDatabase {
                 toReturn.add(i, String.valueOf(rs.getString(1)));
             }
 
+            System.out.println("Succes: " + request);
             return toReturn;
         } catch(SQLException e) {
             System.out.println("Error with the statement : " + e);
-
             return null;
+        }
+    }
+
+    public boolean updateRow(String request) {
+        try {
+            this.sharedObject.prepareStatement(request).executeQuery();
+            System.out.println("Succes: " + request);
+            return true;
+        } catch(SQLException e) {
+            return false;
         }
     }
 

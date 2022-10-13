@@ -11,8 +11,8 @@ import java.awt.Insets;
 public class BLayout extends GridBagConstraints {
     public int PositionOnX = 0;
     public int PositionOnY = 0;
-    public int takeCaseOnX = 0;
-    public int takeCaseOnY = 0;
+    public int takeCaseOnX = 1;
+    public int takeCaseOnY = 1;
     public double sizeOnX = 0.0f;
     public double sizeOnY = 0.0f;
     public int padding_top = 1;

@@ -7,6 +7,7 @@
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import javax.swing.ImageIcon;
 import java.awt.GridBagLayout;
 
 public class BFrame extends JFrame {
@@ -42,11 +43,13 @@ public class BFrame extends JFrame {
         initBFrame();
     }
 
-    private void initBFrame() {
+    protected void initBFrame() {
+        ImageIcon icon = new ImageIcon("src/assets/img/logo.png");
         this.setTitle(this.title);
         this.setLocation(this.location_x, this.location_y);
         this.setSize(this.width, this.height);
         this.setLayout(new GridBagLayout());
+        this.setIconImage(icon.getImage());
         this.setDefaultCloseOperation(this.onClose);
     }
 
