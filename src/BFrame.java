@@ -2,6 +2,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.ImageIcon;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.WindowEvent;
 
 /**
@@ -67,7 +68,28 @@ public class BFrame extends JFrame {
     }
 
     /**
-     * Initialiser la fenetre
+     * Avec le titre, la locasation (en x et y), la taille (en L et l), le layout et le mode de fermeture.
+     *
+     * @param title  Le titre de la fenetre
+     * @param loca_x La localisation en x de la fenetre
+     * @param loca_y La localisation en y de la fenetre
+     * @param size_x La longueur de la fenetre
+     * @param size_y La largeur de la fenetre
+     * @param layout Layout a utiliser dispo : GridBagLayout / GridLayout
+     * @param oC     Mode de fermeture de la fenetre
+     */
+    public BFrame(String title, int loca_x, int loca_y, int size_x, int size_y, String layout, int layout_row, int layout_col, int oC) {
+        this.title = title;
+        this.location_x = loca_x;
+        this.location_y = loca_y;
+        this.width = size_x;
+        this.height = size_y;
+        this.killProcess = oC;
+        initBFrame(layout, layout_row, layout_col);
+    }
+
+    /**
+     * Initialiser la fenetre sans Layout par def.
      */
     protected void initBFrame() {
         ImageIcon icon = new ImageIcon("assets/logo.png");
@@ -75,6 +97,25 @@ public class BFrame extends JFrame {
         this.setLocation(this.location_x, this.location_y);
         this.setSize(this.width, this.height);
         this.setLayout(new GridBagLayout());
+        this.setIconImage(icon.getImage());
+        this.setDefaultCloseOperation(this.killProcess);
+    }
+
+    /**
+     * Initialiser la fenetre avec Layout
+     */
+    protected void initBFrame(String layout, int row, int col) {
+        ImageIcon icon = new ImageIcon("assets/logo.png");
+        this.setTitle(this.title);
+        this.setLocation(this.location_x, this.location_y);
+        this.setSize(this.width, this.height);
+
+        if(layout == "GridLayout") {
+            this.setLayout(new GridLayout(row, col));
+        } else {
+            System.out.println("Un layout doit etre fourni.");
+        }
+
         this.setIconImage(icon.getImage());
         this.setDefaultCloseOperation(this.killProcess);
     }
